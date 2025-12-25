@@ -75,3 +75,19 @@ function endGame() {
   document.getElementById("winner").innerText =
     `${winner[0]} wins with ${winner[1]} points!`;
 }
+let character = "";
+
+function addPlayer() {
+  const name = document.getElementById("playerName").value;
+  character = document.getElementById("character").value;
+  if (!name || players.includes(name)) return;
+
+  players.push(name);
+  scores[name] = { score: 0, char: character };
+
+  const li = document.createElement("li");
+  li.textContent = `${character} ${name}`;
+  document.getElementById("players").appendChild(li);
+
+  document.getElementById("playerName").value = "";
+}
